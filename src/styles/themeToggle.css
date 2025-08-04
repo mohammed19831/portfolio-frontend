@@ -1,0 +1,33 @@
+/* Theme toggle button styling */
+.theme-toggle-label {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1200;
+    color: var(--text-clr);
+    transition: color 0.3s ease;
+}
+
+body:has(#theme-toggle:checked) .theme-toggle-label {
+    color: var(--accent-clr);
+}
+
+/* Hide the checkbox */
+.toggle-checkbox {
+    display: none;
+}
+
+/* Icon swap for theme toggle */
+.theme-toggle-label .fa-sun { 
+    display: none; 
+}
+
+body:has(#theme-toggle:checked) .theme-toggle-label .fa-moon { 
+    display: none; 
+}
+
+body:has(#theme-toggle:checked) .theme-toggle-label .fa-sun  { 
+    display: inline-block; 
+}

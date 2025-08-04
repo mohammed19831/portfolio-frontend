@@ -1,0 +1,502 @@
+/* Discipline and Industry filter styling */
+
+/* Industry tape container */
+.industry-tape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* Adjust spacing between words for large screens */
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--industry-clr);
+    height: auto; /* Allow height to adjust dynamically */
+    overflow: visible; /* Ensure all text is visible */
+}
+
+.animated-text {
+    display: flex; /* Use flexbox to align words horizontally */
+    flex-wrap: nowrap; /* Prevent wrapping for large screens */
+    justify-content: center;
+    gap: 1rem; /* Ensure consistent spacing between words */
+    text-align: center;
+}
+
+.animated-text span, .animated-text label {
+    display: inline-block;
+    white-space: nowrap; /* Prevent words from breaking */
+    transform: none;
+    transition: none;
+}
+
+/* Default (large screen) horizontal layout includes labels */
+.animated-text label {
+    display: inline-block;
+    white-space: nowrap;
+    margin: 0 0.25rem; /* reduced gap */
+}
+
+/* For small screens, simply stack the words without rotation */
+@media (max-width: 768px) {
+    .pipe {
+        display: none;
+    }
+    .industry-tape {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0;
+        margin: 0 auto;
+        justify-content: center;
+        padding-top: 0;
+    }
+
+    /* keep flexbox layout */
+    .animated-text {
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    /* Small screen overrides for labels */
+    .animated-text label {
+        width: 3rem;            /* expanded width to fit longest word */
+        text-align: center;
+        transform: rotate(-55deg);
+        transform-origin: top left;
+        margin: 0;
+    }
+
+    /* overlap successive boxes by a fixed amount */
+    .animated-text label + label {
+        margin-left: -4rem;   /* adjust overlap for new width */
+    }
+
+    .animated-text span {
+        transform: rotate(-45deg);
+        transform-origin: center left; /* hinge at bottom-left */
+        margin: 0;
+        padding-right: 0;
+    }
+
+    /* overlap successive words */
+    .animated-text span + span {
+        margin-left: -1.9rem; /* tune for overlap */
+    }
+
+    .animated-text span:last-child {
+        padding-right: 0; /* no extra space after last */
+    }
+
+    /* remove negative margin rule */
+    .animated-text span:not(:first-child) {
+        margin-left: 0;
+    }
+
+    .animated-text label {
+        transform: rotate(-45deg);
+        transform-origin: center right; /* hinge at right side */
+        margin: 0;
+    }
+    .animated-text label + label {
+        margin-left: -2.2rem; /* more overlap to reduce gap */
+    }
+}
+
+/* Discipline link styles */
+.discipline-link {
+    --line-length: 50%; /* Adjust this value to control underline length */
+    --fg: var(--text-clr); /* store initial text colour */
+    --bg: transparent; /* initial background */
+    display: inline-block; /* Allow padding on all sides */
+    padding: 2px 6px; /* Expand clickable/background area */
+    position: relative;
+    text-decoration: none; /* Remove default underline */
+    color: inherit; /* Inherit text color */
+    cursor: pointer;
+    background: var(--bg);
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Update discipline link colours */
+.discipline-link {
+    --fg: var(--text-clr);
+}
+
+/* Persistent toggle colour swap */
+.discipline-link.active {
+    background-color: var(--text-clr);
+    color: var(--bg-clr);
+}
+
+/* Optional click animation */
+.discipline-link:active {
+    filter: brightness(0.9);
+}
+
+/* Discipline toggle animations */
+.double-line-centre::after {
+    display: block; /* Ensure the pseudo-element is rendered */
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px; /* Distance below text */
+    width: 0%; /* Start with no width */
+    height: 0; /* Height handled by border */
+    border-bottom: 1px solid currentColor; /* Thin underline */
+    transform: translateX(-50%); /* Keep centred */
+    transition: width 0.3s ease; /* Animate width only */
+}
+
+.double-line-centre:hover::after {
+    width: var(--line-length); /* Grow to desired length */
+}
+
+/* Top line animation */
+.double-line-centre::before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -2px; /* Distance above text */
+    width: 0%;
+    height: 0;
+    border-top: 1px solid currentColor; /* Thin line */
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.double-line-centre:hover::before {
+    width: var(--line-length);
+}
+
+/* Variant: top line from right, bottom line from left */
+.top-right-bott-left {
+    --line-length: 50%;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.top-right-bott-left::before {
+    display: block;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 0%;
+    height: 0;
+    border-top: 1px solid currentColor;
+    transition: width 0.3s ease;
+}
+
+.top-right-bott-left:hover::before {
+    width: var(--line-length);
+}
+
+.top-right-bott-left::after {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 0;
+    border-bottom: 1px solid currentColor;
+    transition: width 0.3s ease;
+}
+
+.top-right-bott-left:hover::after {
+    width: var(--line-length);
+}
+
+/* Variant: top line from left, bottom line from right */
+.top-left-bott-right {
+    --line-length: 50%;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.top-left-bott-right::before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 0%;
+    height: 0;
+    border-top: 1px solid currentColor;
+    transition: width 0.3s ease;
+}
+
+.top-left-bott-right:hover::before {
+    width: var(--line-length);
+}
+
+.top-left-bott-right::after {
+    display: block;
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 0;
+    border-bottom: 1px solid currentColor;
+    transition: width 0.3s ease;
+}
+
+.top-left-bott-right:hover::after {
+    width: var(--line-length);
+}
+
+/* Override: on small screens, force centre-out animation for all discipline links */
+@media (max-width: 768px) {
+    .discipline-link::before,
+    .discipline-link::after {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%);
+        width: 0%;
+    }
+
+    .discipline-link:hover::before,
+    .discipline-link:hover::after {
+        width: var(--line-length);
+    }
+}
+
+/* Persist toggle using adjacent checkbox */
+.discipline-toggle:checked + .discipline-link {
+    background-color: var(--text-clr);
+    color: var(--bg-clr);
+}
+
+/* Remove default cursor from hidden inputs */
+.discipline-toggle {
+    display: none;
+}
+
+/* Industry link toggle styles */
+.industry-link {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--industry-clr);
+    user-select: none;
+    padding: 2px 4px; /* constant padding to avoid size shift */
+    font-weight: normal; /* revert to regular weight */
+}
+
+/* Faux-bold on hover */
+.industry-link:hover {
+    text-shadow: -0.4px 0 currentColor, 0 0.4px currentColor,
+                0.4px 0 currentColor, 0 -0.4px currentColor;
+}
+
+/* Toggled (active) state is thin **unless** also hovered */
+.industry-toggle:checked + .industry-link {
+    text-shadow: none;
+}
+
+.industry-toggle:checked + .industry-link:hover {
+    text-shadow: -0.4px 0 currentColor, 0 0.4px currentColor,
+                0.4px 0 currentColor, 0 -0.4px currentColor;
+}
+
+/* Bold (faux) on small-screen hover */
+@media (max-width: 768px) {
+    .industry-link:hover {
+        text-shadow: -0.4px 0 currentColor, 0 0.4px currentColor,
+                    0.4px 0 currentColor, 0 -0.4px currentColor;
+    }
+
+    .industry-toggle:checked + .industry-link {
+        text-shadow: none;
+    }
+
+    .industry-toggle:checked + .industry-link:hover {
+        text-shadow: -0.4px 0 currentColor, 0 0.4px currentColor,
+                    0.4px 0 currentColor, 0 -0.4px currentColor;
+    }
+
+    /* Industry ticker (rotated / small-screen) interactions */
+    .industry-link {
+        position: relative;
+    }
+
+    /* vertical line – flush left side */
+    .industry-link::after {
+        content: '';
+        position: absolute;
+        left: 0;                        /* stick to left-most edge */
+        top: 0;
+        height: 0;
+        border-left: 1px solid currentColor;
+        transition: height 0.3s ease;
+    }
+
+    /* horizontal underline */
+    .industry-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;                  /* small offset below text */
+        width: 0;
+        border-bottom: 1px solid currentColor;
+        transition: width 0.3s ease;
+    }
+
+    /* active state (hover or checkbox) */
+    .industry-link:hover,
+    .industry-toggle:checked + .industry-link {
+        background-color: transparent;
+        color: var(--industry-clr);
+    }
+
+    .industry-link:hover::after,
+    .industry-toggle:checked + .industry-link::after {
+        height: 100%;                   /* draw vertical line */
+    }
+
+    .industry-link:hover::before,
+    .industry-toggle:checked + .industry-link::before {
+        width: 100%;                    /* draw horizontal underline */
+    }
+
+    /* Industry-specific faint gradient backgrounds (hover & active states) – small-screen mode */
+    /* Healthcare – YInMn Blue */
+    #ind-health + label:hover,
+    #ind-health:checked + label {
+        color: #4A7CB2; /* brighter for dark mode contrast */
+        background-image: none;
+    }
+
+    /* Surgery – Moonstone */
+    #ind-surg + label:hover,
+    #ind-surg:checked + label {
+        color: #4DA1A9;
+        background-image: none;
+    }
+
+    /* Metrology – Orange Peel */
+    #ind-metro + label:hover,
+    #ind-metro:checked + label {
+        color: #FFA630;
+        background-image: none;
+    }
+
+    /* Agriculture – Tea Green */
+    #ind-agri + label:hover,
+    #ind-agri:checked + label {
+        color: #8FBA61; /* deeper tea green for light mode visibility */
+        background-image: none;
+    }
+
+    /* AR/VR – Tyrian Purple */
+    #ind-xr + label:hover,
+    #ind-xr:checked + label {
+        color: #B04477; /* lighter purple for dark mode contrast */
+        background-image: none;
+    }
+}
+
+/* Industry link colour swaps (large screens) */
+#ind-health + .industry-link:hover,
+#ind-health:checked + .industry-link {
+    color: #4A7CB2; /* Healthcare */
+    background-color: transparent;
+}
+
+#ind-surg + .industry-link:hover,
+#ind-surg:checked + .industry-link {
+    color: #4DA1A9; /* Surgery */
+    background-color: transparent;
+}
+
+#ind-metro + .industry-link:hover,
+#ind-metro:checked + .industry-link {
+    color: #FFA630; /* Metrology */
+    background-color: transparent;
+}
+
+#ind-agri + .industry-link:hover,
+#ind-agri:checked + .industry-link {
+    color: #8FBA61; /* Agriculture */
+    background-color: transparent;
+}
+
+#ind-xr + .industry-link:hover,
+#ind-xr:checked + .industry-link {
+    color: #B04477; /* AR / VR */
+    background-color: transparent;
+}
+
+/* Industry link line-draw effect (large screens) */
+@media (min-width: 769px) {
+    .industry-link {
+        position: relative;
+    }
+
+    /* top line element */
+    .industry-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-top: 1px solid currentColor;
+        transition: width 0.2s ease 0.2s; /* retract after vertical lines */
+    }
+
+    /* wrapper for vertical borders */
+    .industry-link::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        border-left: 1px solid currentColor;
+        border-right: 1px solid currentColor;
+        box-sizing: border-box;
+        transition: height 0.2s ease 0s; /* retract first */
+    }
+
+    /* Hover / active state — play top first, then verticals */
+    .industry-link:hover::before,
+    .industry-toggle:checked + .industry-link::before {
+        width: 100%;
+        transition: width 0.2s ease 0s; /* draw immediately */
+    }
+
+    .industry-link:hover::after,
+    .industry-toggle:checked + .industry-link::after {
+        height: 100%;
+        transition: height 0.2s ease 0.2s; /* draw after top line */
+    }
+}
+
+/* Override hover colour when NOT selected */
+#ind-health:not(:checked) + .industry-link:hover,
+#ind-surg:not(:checked) + .industry-link:hover,
+#ind-metro:not(:checked) + .industry-link:hover,
+#ind-agri:not(:checked) + .industry-link:hover,
+#ind-xr:not(:checked) + .industry-link:hover {
+    color: var(--industry-clr); /* revert to default */
+    background-color: transparent;
+}
+
+@media (max-width: 768px) {
+    #ind-health:not(:checked) + label:hover,
+    #ind-surg:not(:checked) + label:hover,
+    #ind-metro:not(:checked) + label:hover,
+    #ind-agri:not(:checked) + label:hover,
+    #ind-xr:not(:checked) + label:hover {
+        color: var(--industry-clr);
+        background-image: none;
+    }
+}

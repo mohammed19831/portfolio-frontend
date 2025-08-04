@@ -1,0 +1,48 @@
+/* Layout containers and spacing */
+.section {
+    padding: 40px;
+    max-width: 800px;
+    margin: auto;
+    text-overflow: ellipsis;
+}
+
+.project, .experience {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.project summary, .experience summary {
+    cursor: pointer;
+    outline: none;
+}
+
+/* Tags styling */
+.tags span, .skills span {
+    display: inline-block;
+    background-color: var(--tag-bg);
+    padding: 4px 8px;
+    margin: 4px;
+    border-radius: 5px;
+    font-size: 0.7rem;
+}
+
+/* Logo positioning */
+.logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    z-index: 900;
+}
+
+/* Menu positioning */
+.menu {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    padding: 20px;
+    z-index: 1000;
+}

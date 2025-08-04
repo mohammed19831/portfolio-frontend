@@ -1,0 +1,109 @@
+/* NDA Input field and related components */
+
+/* Secret share-code form styling */
+.sharecode-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.sharecode-form input[type="password"] {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.sharecode-form input[type="password"]:focus {
+    border-color: #ff9900;
+    outline: none;
+}
+
+.sharecode-form input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.sharecode-form button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff9900;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sharecode-form button:hover {
+    background-color: #e68a00;
+}
+
+/* Style for the icon button */
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333; /* Match the dark text color */
+    transition: color 0.3s ease;
+}
+
+.icon-button:hover {
+    color: #ff9900; /* Change to orange on hover */
+}
+
+.icon-button i {
+    transition: transform 0.3s ease;
+}
+
+.icon-button:hover i {
+    transform: rotate(20deg); /* Add a slight rotation effect */
+}
+
+/* Style the secure input to prevent horizontal scrolling and adjust width dynamically */
+#secure-input {
+    font-family: 'Courier New', Courier, monospace; /* Typewriter/Coding font */
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    width: calc(15ch + 30px); /* Width based on 15 characters plus padding */
+    background: transparent;
+    color: #333;
+    letter-spacing: 2px; /* Add spacing between letters */
+    transition: border-color 0.3s ease;
+    overflow: hidden; /* Prevent horizontal scrolling */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+#secure-input:focus {
+    border-color: #ff9900;
+}
+
+#secure-input::placeholder {
+    font-family: 'Courier New', Courier, monospace; /* Match placeholder font */
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Style the button */
+#fold-down .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+}
+
+#fold-down .icon-button:hover {
+    color: #ff9900;
+}

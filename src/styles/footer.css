@@ -1,0 +1,13 @@
+/* ===================================
+   FOOTER.CSS
+   Footer component styling
+=================================== */
+
+.footer {
+    margin-top: auto; /* Push the footer to the bottom */
+    background-color: #333; /* Dark background */
+    color: white; /* White text */
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}

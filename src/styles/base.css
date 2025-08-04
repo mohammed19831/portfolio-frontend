@@ -1,0 +1,39 @@
+/* Theme variables and base styling */
+body {
+    --bg-clr: #f9fafb;
+    --text-clr: #333;
+    --accent-clr: #ff9900;
+    --svg-stroke: #000;
+    --icon-clr: #000;
+    --industry-clr: #555; /* subtle grey for industry tape */
+    --tag-bg: #e7e7e7;
+
+    background-color: var(--bg-clr);
+    color: var(--text-clr);
+}
+
+/* Dark theme when checkbox checked */
+body:has(#theme-toggle:checked) {
+    --bg-clr: #121212;
+    --text-clr: #f5f5f5;
+    --accent-clr: #ffcc00;
+    --svg-stroke: #f5f5f5;
+    --icon-clr: #f5f5f5;
+    --industry-clr: #bbbbbb; /* lighter grey for dark theme */
+    --tag-bg: #444;
+}
+
+/* Apply accent to links */
+a {
+    color: var(--text-clr);
+}
+
+/* Base typography */
+h1 {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+h1.clicked {
+    transform: translateY(10px);
+}

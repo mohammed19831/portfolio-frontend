@@ -1,0 +1,180 @@
+/* ===================================
+   APP.CSS
+   Shared styles and common utilities
+=================================== */
+
+/* CSS Custom Properties (Theme Variables) */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    --bg-clr: #f9fafb;
+    --text-clr: #333;
+    --accent-clr: #ff9900;
+    --svg-stroke: #000;
+    --icon-clr: #000;
+    --industry-clr: #555;
+    --tag-bg: #e7e7e7;
+    background-color: var(--bg-clr);
+    color: var(--text-clr);
+}
+
+/* Dark theme variables */
+body:has(#theme-toggle:checked) {
+    --bg-clr: #121212;
+    --text-clr: #f5f5f5;
+    --accent-clr: #ffcc00;
+    --svg-stroke: #f5f5f5;
+    --icon-clr: #f5f5f5;
+    --industry-clr: #bbbbbb;
+    --tag-bg: #444;
+}
+
+/* Default link styling */
+a {
+    color: var(--text-clr);
+    position: relative;
+    background: none;
+    text-decoration: none;
+}
+
+a::after {
+    display: none;
+}
+
+a:hover {
+    color: inherit;
+}
+
+/* Default div centering behavior */
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Section padding and layout */
+.section {
+    padding: 40px;
+    max-width: 800px;
+    margin: auto;
+    text-overflow: ellipsis;
+}
+
+/* Selection styling */
+::selection {
+    background: #ffcc00;
+    color: #333;
+}
+
+/* Common tag styling */
+.tags span, 
+.skills span {
+    display: inline-block;
+    background-color: var(--tag-bg);
+    padding: 4px 8px;
+    margin: 4px;
+    border-radius: 5px;
+    font-size: 0.7rem;
+}
+
+/* Hidden checkbox utility */
+.toggle-checkbox,
+.discipline-toggle,
+.industry-toggle {
+    display: none;
+}
+
+/* Theme toggle button */
+.theme-toggle-label {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1200;
+    color: var(--text-clr);
+    transition: color 0.3s ease;
+}
+
+body:has(#theme-toggle:checked) .theme-toggle-label {
+    color: var(--accent-clr);
+}
+
+/* Icon swap for theme toggle */
+.theme-toggle-label .fa-sun { 
+    display: none; 
+}
+
+body:has(#theme-toggle:checked) .theme-toggle-label .fa-moon { 
+    display: none; 
+}
+
+body:has(#theme-toggle:checked) .theme-toggle-label .fa-sun { 
+    display: inline-block; 
+}
+
+/* Form input styling */
+input[type="password"], 
+#secure-input {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+    outline: none;
+}
+
+input[type="password"]:focus,
+#secure-input:focus {
+    border-color: #ff9900;
+}
+
+input::placeholder,
+#secure-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff9900;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e68a00;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Responsive breakpoint utilities */
+@media (max-width: 1024px) {
+    /* Medium screen adjustments */
+}
+
+@media (max-width: 768px) {
+    /* Small screen adjustments */
+    .section {
+        padding: 20px;
+    }
+}

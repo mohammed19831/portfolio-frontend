@@ -1,0 +1,54 @@
+/* Global reset and entry-level styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Text selection styling */
+::selection {
+    background: #ffcc00;
+    color: #333;
+}
+
+/* Default behavior for all divs to be horizontally centered */
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Base link styling */
+a {
+    position: relative;
+    background: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+a::after {
+    display: none;
+}
+
+a:hover {
+    color: inherit;
+}

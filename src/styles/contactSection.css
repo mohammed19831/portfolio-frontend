@@ -1,0 +1,52 @@
+/* ===================================
+   CONTACT SECTION.CSS
+   Styles for contact section and SVG container
+=================================== */
+
+/* SVG container styling */
+.svg-container {
+    width: 100%;
+    max-width: 200px;
+    margin: 5px auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+  
+svg {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding-top: 0;
+}
+
+/* Contact icon styling */
+.contact-icon {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* LinkedIn icon styling */
+.linkedin-icon {
+    display: inline-block;
+    margin: 0;
+    margin-top: 1em;
+    text-align: center;
+    position: relative;
+    font-size: 2rem;
+    color: var(--icon-clr);
+    text-decoration: none;
+}
+
+/* Small screen adjustments for LinkedIn icon */
+@media (max-width: 768px) {
+    .linkedin-icon {
+        display: block;
+        margin: 2rem auto 0;
+        text-align: center;
+    }
+}

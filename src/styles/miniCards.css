@@ -1,0 +1,58 @@
+/* ===================================
+   MINI CARDS.CSS
+   Mini card component styling and positioning
+=================================== */
+
+/* Base mini card styles */
+.mini-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    position: absolute;
+    z-index: 10;
+    padding: 5px 10px;
+    opacity: 0;
+}
+
+.mini-card a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.9rem;
+}
+
+/* Tag styling within mini cards */
+.mini-card .tag {
+    display: inline-block;
+    background-color: var(--tag-bg);
+    padding: 4px 8px;
+    margin: 4px;
+    border-radius: 7px;
+    font-size: 0.85rem;
+}
+
+/* Tag positioning and display */
+.mini-card a .tag {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.7rem;
+}
+
+/* Tag bracket sizing */
+.mini-card .tag::before,
+.mini-card .tag::after {
+    font-size: 0.7rem;
+}
+
+/* Position for the Contract/Consult mini card */
+.mini-card.contract {
+    top: 170px;
+    right: 0;
+    transform: translateX(37%);
+}
+
+/* Position for the Employ/Hire mini card */
+.mini-card.employ {
+    top: 80px;
+    left: 0;
+    transform: translateX(-37%);
+}

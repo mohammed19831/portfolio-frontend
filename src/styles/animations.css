@@ -1,0 +1,276 @@
+/* ===================================
+   ANIMATIONS.CSS
+   All keyframes and animation-related styles
+=================================== */
+
+/* Keyframe definitions */
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* SVG line drawing animations */
+.svg-container line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 0.5s ease-in-out forwards;
+    stroke: var(--svg-stroke) !important;
+}
+
+/* Sequential animation delays for SVG lines */
+.svg-container line:nth-child(1) { animation-delay: 0s; }
+.svg-container line:nth-child(2) { animation-delay: 0.05s; }
+.svg-container line:nth-child(3) { animation-delay: 0.1s; }
+.svg-container line:nth-child(4) { animation-delay: 0.15s; }
+.svg-container line:nth-child(5) { animation-delay: 0.25s; }
+.svg-container line:nth-child(6) { animation-delay: 0.3s; }
+.svg-container line:nth-child(7) { animation-delay: 0.35s; }
+.svg-container line:nth-child(8) { animation-delay: 0.4s; }
+
+/* Mini card tag folding animation */
+.mini-card a .tag {
+    transform: scaleY(0);
+    transform-origin: top;
+    opacity: 0;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+.mini-card a:hover .tag {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+/* Fade-in animations for mini cards */
+.mini-card.contract {
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.45s;
+}
+
+.mini-card.employ {
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.2s;
+}
+
+/* Click animation for header */
+h1 {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+h1.clicked {
+    transform: translateY(10px);
+}
+
+/* Icon button hover animations */
+.icon-button {
+    transition: color 0.3s ease;
+}
+
+.icon-button:hover {
+    color: #ff9900;
+}
+
+.icon-button i {
+    transition: transform 0.3s ease;
+}
+
+.icon-button:hover i {
+    transform: rotate(20deg);
+}
+
+/* LinkedIn icon hover animation */
+.linkedin-icon {
+    transition: color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.linkedin-icon:hover {
+    background: linear-gradient(45deg, #ffcc00, #ff9900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    opacity: 0.8;
+}
+
+/* Discipline link animations */
+.discipline-link {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.discipline-link:active {
+    filter: brightness(0.9);
+}
+
+/* Double line animation effects */
+.double-line-centre::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0%;
+    height: 0;
+    border-bottom: 1px solid currentColor;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.double-line-centre:hover::after {
+    width: var(--line-length);
+}
+
+.double-line-centre::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    width: 0%;
+    height: 0;
+    border-top: 1px solid currentColor;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.double-line-centre:hover::before {
+    width: var(--line-length);
+}
+
+/* Top-right, bottom-left line animations */
+.top-right-bott-left::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 0%;
+    height: 0;
+    border-top: 1px solid currentColor;
+    transition: width 0.3s ease;
+}
+
+.top-right-bott-left:hover::before {
+    width: var(--line-length);
+}
+
+.top-right-bott-left::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 0;
+    border-bottom: 1px solid currentColor;
+    transition: width 0.3s ease;
+}
+
+.top-right-bott-left:hover::after {
+    width: var(--line-length);
+}
+
+/* Top-left, bottom-right line animations */
+.top-left-bott-right::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 0%;
+    height: 0;
+    border-top: 1px solid currentColor;
+    transition: width 0.3s ease;
+}
+
+.top-left-bott-right:hover::before {
+    width: var(--line-length);
+}
+
+.top-left-bott-right::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 0;
+    border-bottom: 1px solid currentColor;
+    transition: width 0.3s ease;
+}
+
+.top-left-bott-right:hover::after {
+    width: var(--line-length);
+}
+
+/* Industry link line-draw effects */
+@media (min-width: 769px) {
+    .industry-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-top: 1px solid currentColor;
+        transition: width 0.2s ease 0.2s;
+    }
+
+    .industry-link::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        border-left: 1px solid currentColor;
+        border-right: 1px solid currentColor;
+        box-sizing: border-box;
+        transition: height 0.2s ease 0s;
+    }
+
+    .industry-link:hover::before,
+    .industry-toggle:checked + .industry-link::before {
+        width: 100%;
+        transition: width 0.2s ease 0s;
+    }
+
+    .industry-link:hover::after,
+    .industry-toggle:checked + .industry-link::after {
+        height: 100%;
+        transition: height 0.2s ease 0.2s;
+    }
+}
+
+/* Small screen industry link animations */
+@media (max-width: 768px) {
+    .industry-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 0;
+        border-left: 1px solid currentColor;
+        transition: height 0.3s ease;
+    }
+
+    .industry-link::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        border-bottom: 1px solid currentColor;
+        transition: width 0.3s ease;
+    }
+
+    .industry-link:hover::after,
+    .industry-toggle:checked + .industry-link::after {
+        height: 100%;
+    }
+
+    .industry-link:hover::before,
+    .industry-toggle:checked + .industry-link::before {
+        width: 100%;
+    }
+}

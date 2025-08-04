@@ -1,0 +1,121 @@
+/* Header section styling */
+header {
+    padding: 100px 40px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+header p {
+    font-size: 1.4rem; /* increased size */
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.2rem; /* tighter gap below name */
+}
+
+header p span {
+    display: inline; /* Default inline for wider screens */
+}
+
+/* Hide all name spans by default, then show the desired one */
+header h1 span { 
+    display: none;
+}
+header h1 .full-name { 
+    display: inline;
+}
+
+/* For medium screens (max-width:1024px): hide full name and show short name */
+@media (max-width: 1024px) {
+    header h1 .full-name {
+        display: none;
+    }
+    header h1 .short-name {
+        display: inline;
+    }
+}
+
+/* For small screens (max-width:768px): hide short name and show shortest name */
+@media (max-width: 768px) {
+    header p {
+        flex-direction: column; /* Stack items vertically */
+        gap: 0.2rem; /* Reduce spacing between stacked items */
+    }
+
+    header p span {
+        display: block; /* Stack each section */
+    }
+
+    /* Hide the '|' separators (assumed to be the 2nd and 4th spans) */
+    header p span:nth-child(2),
+    header p span:nth-child(4) {
+        display: none;
+    }
+
+    header h1 {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
+    header h1 .short-name {
+        display: none;
+    }
+    header h1 .shortest-name {
+        display: inline;
+    }
+    .pipe {
+        display: none;
+    }
+}
+
+/* Style the label to make the header clickable */
+.toggle-label {
+    cursor: pointer;
+}
+
+/* Show the text input when the checkbox is checked */
+.toggle-checkbox:checked ~ #hidden-input {
+    display: block;
+}
+
+/* Hide the fold-down span by default */
+#fold-down {
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Show the fold-down span when the checkbox is checked */
+.toggle-checkbox:checked ~ #fold-down {
+    display: block;
+}
+
+#hidden-input {
+    display: none;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid #333;
+    outline: none;
+    width: 200px;
+    background: transparent;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+#hidden-input:focus {
+    border-bottom: 2px solid #ff9900;
+}
